@@ -1,5 +1,7 @@
 @import "tailwindcss";
-
+*{
+    font-family: 'Times New Roman', Times, serif;
+}
 
 a.active hr{
     display: block;
