@@ -4,7 +4,7 @@ import { ShopContext } from '../context/ShopContext'
 
 const ProductItem = ({id,  name,image, price }) => {
   const {currency}=useContext(ShopContext)
-  console.log(image[0])
+  
   return (
     <>
     {/* Monika - Rem */}
