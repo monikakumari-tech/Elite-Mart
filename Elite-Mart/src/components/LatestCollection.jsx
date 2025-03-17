@@ -9,16 +9,16 @@ const LatestCollection = () => {
   useEffect(()=>{
     setLatestProduct(products.slice(0,10))
   },[])
-  console.log(latestProducts)
+  
     return (
     <div>
       <div className="my-10">
         <div className="text-center">
-          <div className="flex items-center justify-center gap-2 text-3xl">
+          <div className="flex items-center justify-center gap-2 ">
             <Title text1={"Latest"} text2={"Collection"} />
           </div>
 
-          <p>
+          <p className="text-lg px-20 py-5 text-gray-600">
             Welcome to MUJ, where fashion meets elegance. We bring you a
             carefully curated collection of trendy, comfortable, and
             high-quality clothing designed to make you look and feel your best.

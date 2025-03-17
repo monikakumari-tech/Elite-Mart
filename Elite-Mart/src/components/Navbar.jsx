@@ -8,9 +8,9 @@ const Navbar = () => {
    
     <div className="flex justify-between items-center py-5 font-medium">
      <NavLink to="/" >
-      <img src={assets.mujlogo} alt="logo" className="w-36 h-16 rounded" />
+      <img src={assets.mujlogo} alt="logo" className="w-40 h-18 rounded" />
       </NavLink>
-      <ul className="hidden sm:flex gap-5 text-sm text-gray-700">
+      <ul className="hidden sm:flex gap-5 text-[16px] text-gray-700">
 
    
         <NavLink to="/" className="flex flex-col items-center gap-1 ">
@@ -35,7 +35,7 @@ const Navbar = () => {
       </ul>
 
       <div className="flex item-center gap-6">
-        <img src={assets.search_icon} alt="search" className="w-5" />
+        <img src={assets.search_icon} alt="search" className="w-6" />
         <div className="group relative">
           <img src={assets.profile_icon} alt="profile" className="w-5" />
 
@@ -55,6 +55,8 @@ const Navbar = () => {
         </Link>
         <img onClick={()=>setVisible(true)}  src={assets.menu_icon} alt="menu" className=" w-5 cursor-pointer sm:hidden" />
       </div>
+
+
       {/* Mobile view  */}
      <div className={`absolute top-0 right-0 bottom-0 overflow-hidden bg-white transition-all ${visible ? "w-full" :"w-0"}`}>
    
