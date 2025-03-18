@@ -5,6 +5,7 @@ import LatestCollection from "../components/LatestCollection";
 import BestSeller from "../components/BestSeller";
 import Ourpolicy from "../components/OurPolicy";
 import Subscribe from "../components/Subscribe";
+import Footer from "../components/Footer";
 
 
 
@@ -16,6 +17,7 @@ const Home = () => {
     <BestSeller/>
     <Ourpolicy/>
     <Subscribe/>
+    <Footer/>
    
   </div>
   );
