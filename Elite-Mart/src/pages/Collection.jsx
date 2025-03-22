@@ -8,6 +8,7 @@ const Collection = () => {
   const [showFilter, setShowFilter] = useState(false);
   const [category, setCategory] = useState([]);
   const [subCategory, setSubCategory] = useState([]);
+  const [filterPrice, setFilterPrice] = useState("relevant")
   const { products } = useContext(ShopContext);
   const [latestProducts, setLatestProducts] = useState([]);
   useEffect(() => {
@@ -32,21 +33,38 @@ const Collection = () => {
     }
 
   }
+  const toggleFilterPrice=(e)=>{
+    setFilterPrice( e.target.value)
+  }
   const applyFilter=()=>{
     let productCopy=products.slice()
    
     if(category.length > 0){
       productCopy=productCopy.filter((item)=>category.includes(item.category))
     }
+    if(subCategory.length > 0){
+      productCopy=productCopy.filter((item)=>subCategory.includes(item.subCategory))
+    }
+    if(filterPrice=="lowToHigh"){
+      productCopy.sort((a,b)=>a.price-b.price)
+    }else if(filterPrice=="highToLow"){
+      productCopy.sort((a,b)=>b.price-a.price)
+    }else{
+      productCopy=productCopy
+    }
+  
+
     console.log(productCopy)
     setLatestProducts(productCopy)
+    
+  
   }
-
+  
   useEffect(()=>{
   
     applyFilter()
     
-  },[category,subCategory])
+  },[category,subCategory,filterPrice])
   
 
 
@@ -118,11 +136,13 @@ const Collection = () => {
             <select
               className="border-1 border-gray-400 p-3"
               name="Sort by"
-              id=""
+              id="selectPrice"
+              onChange={toggleFilterPrice}
+              
             >
-              <option value="">Sort by: Relavent</option>
-              <option value="">Sort by: Low to High</option>
-              <option value="">Sort by: High to Low</option>
+              <option value="relevent" >Sort by: Relevent</option>
+              <option value="lowToHigh">Sort by: Low to High</option>
+              <option value="highToLow">Sort by: High to Low</option>
             </select>
           </div>
         </div>
