@@ -3,6 +3,7 @@ import Title from "../components/Title";
 import { assets } from "../assets/assets";
 import { ShopContext } from "../context/ShopContext";
 import ProductItem from "../components/ProductItem";
+import SearchBar from "../components/SearchBar";
 
 const Collection = () => {
   const [showFilter, setShowFilter] = useState(false);
@@ -69,7 +70,10 @@ const Collection = () => {
 
 
   return (
+    <>
+    
     <div className="flex flex-col sm:flex-row gap-1 sm:gap-10 pt-10 border-t">
+
       <div className="min-w-60 ">
         <p
           onClick={() => setShowFilter(!showFilter)}
@@ -159,6 +163,7 @@ const Collection = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 export default Collection;
