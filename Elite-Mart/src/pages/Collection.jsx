@@ -10,7 +10,7 @@ const Collection = () => {
   const [category, setCategory] = useState([]);
   const [subCategory, setSubCategory] = useState([]);
   const [filterPrice, setFilterPrice] = useState("relevant")
-  const { products } = useContext(ShopContext);
+  const { products, search, showSearch } = useContext(ShopContext);
   const [latestProducts, setLatestProducts] = useState([]);
   useEffect(() => {
     setLatestProducts(products);
@@ -39,7 +39,9 @@ const Collection = () => {
   }
   const applyFilter=()=>{
     let productCopy=products.slice()
-   
+   if(search && showSearch){
+      productCopy= productCopy.filter((item)=>item.name.toLowerCase().includes(search.toLowerCase()))
+   }
     if(category.length > 0){
       productCopy=productCopy.filter((item)=>category.includes(item.category))
     }
@@ -53,7 +55,7 @@ const Collection = () => {
     }else{
       productCopy=productCopy
     }
-  
+    
 
     console.log(productCopy)
     setLatestProducts(productCopy)
@@ -65,7 +67,7 @@ const Collection = () => {
   
     applyFilter()
     
-  },[category,subCategory,filterPrice])
+  },[category,subCategory,filterPrice,search])
   
 
 
