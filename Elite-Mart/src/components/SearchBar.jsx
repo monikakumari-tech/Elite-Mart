@@ -18,7 +18,7 @@ const SearchBar = () => {
   return showSearch && visible ? (
     <div class="flex items-center py-4 bg-gray-50 justify-center border-t border-b">
       <div class=" bg-white  border border-gray-400 rounded-3xl px-5 flex justify-between w-3/4 sm:w-1/2">
-        <input type="text" placeholder="Search" class="outline-none" />
+        <input type="text" placeholder="Search" class="outline-none" value={search} onChange={(e)=>setSearch(e.target.value)}/>
         <img src={assets.search_icon} alt="search" class="p-2 w-10 " />
       </div>
       <img
