@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { ShopContext } from "../context/ShopContext";
 import { assets } from "../assets/assets";
 import Title from "../components/Title";
+import RelatedProduct from "../components/relatedProduct";
 
 const Product = () => {
   const [productdata, setProductdata] = useState(false);
@@ -78,8 +79,11 @@ const Product = () => {
      </div>
      
      {/* bottom */}
-     <div>
+     <div className="my-24">
+      <div className="text-center">
       <Title text1={"Related"} text2={"Products"}/>
+      </div>
+      <RelatedProduct category={productdata.category} subCategory={productdata.subCategory}/>
      </div>
      
     </div>
