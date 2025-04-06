@@ -11,7 +11,7 @@ const Product = () => {
   const { productId } = useParams();
   const [image, setImage] =useState("");
   const [size, setSize] = useState("")
-
+console.log(productId)
   const fetchProductData = async () => {
     products.map((item) => {
       // return item._id == productId ? setProductdata(item) : null;
@@ -58,7 +58,7 @@ const Product = () => {
          <p className="text-3xl">$ {productdata.price}</p>
          <p className="text-gray-500">{productdata.description}</p>
          <p>Select Size</p>
-         <div className="my-2">{productdata.sizes.map((el)=><span onClick={()=>setSize(el)} className={`bg-gray-200 p-4 mr-3 border ${el== size ? "border-orange-500":""}`}>{el}</span>)}</div>
+         <div className="my-2">{productdata.sizes.map((el, index)=><span key={index} onClick={()=>setSize(el)} className={`bg-gray-200 p-4 mr-3 border ${el== size ? "border-orange-500":""}`}>{el}</span>)}</div>
          
         <button className="bg-gray-800 text-blue-50 py-3 w-fit px-8" onClick={()=>addToCart(productdata._id, size)}>Add To Cart</button>
         <hr className="text-gray-400"/>
