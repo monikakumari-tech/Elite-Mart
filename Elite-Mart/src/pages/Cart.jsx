@@ -3,6 +3,7 @@ import { ShopContext } from '../context/ShopContext'
 import Title from '../components/Title';
 import { assets } from '../assets/assets';
 import CartTotal from '../components/CartTotal';
+import { Link } from 'react-router-dom';
 
 const Cart = () => {
   const {cartItem,products,currency,updateQuantity}=useContext(ShopContext);
@@ -71,8 +72,20 @@ const Cart = () => {
           </>
         )
        })}
-<CartTotal/>
+       <div className='flex justify-end my-20'>
+        <div className='w-full sm:w-[450px]'>
+       <CartTotal/>
 
+        </div>
+       </div>
+
+<div className="flex justify-end">
+        <Link to='/place-order' >
+          <button className="bg-black text-white py-4 px-8 mt-2 text-right" >
+            Proceed To CheckOut
+          </button>
+          </Link>
+        </div>
          
         
 
