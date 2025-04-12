@@ -3,7 +3,8 @@ import { useParams } from "react-router-dom";
 import { ShopContext } from "../context/ShopContext";
 import { assets } from "../assets/assets";
 import Title from "../components/Title";
-import RelatedProduct from "../components/relatedProduct";
+import RelatedProduct from "../components/RelatedProduct";
+
 
 const Product = () => {
   const [productdata, setProductdata] = useState(false);
