@@ -12,7 +12,7 @@ const app = express()
 
 const port = process.env.port || 4000
 connectDB()
-// connectCloudinary()
+connectCloudinary()
 // middleware
 app.use(express.json())
 app.use(cors())
