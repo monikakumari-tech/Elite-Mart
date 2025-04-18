@@ -1,4 +1,5 @@
 import {v2 as cloudinary} from "cloudinary";
+import productModel from "../models/productModel.js";
 // add product
 const addProduct = async (req, res) => {
   try {
@@ -39,6 +40,25 @@ const addProduct = async (req, res) => {
       bestSeller
     );
    
+    // save data on MongoDB
+    const productData= { 
+       name,
+      description,
+      price:Number(price),
+      image:imagesURL,
+      date:Date.now(),
+      category,
+      subCategory,
+      sizes:JSON.parse(sizes),
+      bestSeller:bestSeller==="true"?true:false
+    }
+
+    const product= new productModel(productData)
+    await product.save()
+    res.json({
+      success: true,
+      message: "product added"
+    })
   } catch (error) {
     console.log(error);
     res.json({ success: false, message: error.message });
@@ -53,3 +73,4 @@ const removeProduct = async (res, req) => {};
 const singleProduct = async (res, req) => {};
 
 export { addProduct, listProducts, removeProduct, singleProduct };
+
