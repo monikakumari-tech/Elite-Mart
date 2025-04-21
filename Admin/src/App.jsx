@@ -1,8 +1,17 @@
+import Navbar from "./components/Navbar"
+import Sidebar from "./components/Sidebar"
+
 const App = () => {
   return (
-    <h1 class="text-3xl font-bold underline bg-amber-600">
-    Hello world!
-  </h1>
+    <div className="bg-gray-50 min-h-screen">
+       <>
+   <Navbar/>
+   <div>
+    <Sidebar/>
+   </div>
+   </>
+    </div>
+  
   )
 }
 export default App
