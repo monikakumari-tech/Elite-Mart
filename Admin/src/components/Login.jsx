@@ -13,12 +13,13 @@ const Login = ({setToken}) =>{
         // console.log(email, password)
 
         const response= await axios.post(backend_url + "/api/user/admin",{email,password})
+        console.log(response)
        if(response.data.success){
          setToken(response.data.token)
        }else{
         toast.error(response.data.message)
        }
-        console.log(response)
+     
       }catch(error){
          console.log(error)
       }
