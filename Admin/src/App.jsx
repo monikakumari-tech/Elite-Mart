@@ -29,7 +29,7 @@ useEffect(()=>{
       <ToastContainer/>
       {
         token==""?<Login setToken={setToken}/>: <>
-        <Navbar setToken={setToken}/>
+        <Navbar setToken={setToken} />
         <div className="w-full flex">
          
          <Sidebar/>
