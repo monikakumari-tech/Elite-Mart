@@ -1,7 +1,9 @@
 import { useState } from "react"
 import { assets } from "../assets/assets"
+import {backend_url} from "../App"
+import axios from "axios"
 
-const Add = () => {
+const Add = ({token}) => {
   const [image1, setImage1]=useState(false)
   const [image2, setImage2]=useState(false)
   const [image3, setImage3]=useState(false)
@@ -13,10 +15,35 @@ const Add = () => {
   const [subCategory, setSubCategory]=useState("Topwear")
   const [bestseller, setBestseller]=useState(false)
   const [sizes, setSizes]=useState([])
+  console.log(token)
+
+  const onSubmitHandler = async(e)=>{
+        e.preventDefault()
+        try{
+            const formData = new FormData()
+            formData.append("name",name)
+            formData.append("description",description)
+            formData.append("price",price)
+            formData.append("category",category)
+            formData.append("subCategory",subCategory)
+            formData.append("bestSeller",bestseller)
+            formData.append("sizes",JSON.stringify(sizes))
+            formData.append("subCategory",subCategory)
+            image1 && formData.append("image1",image1)
+            image2 && formData.append("image2",image2)
+            image3 && formData.append("image3",image3)
+            image4 && formData.append("image4",image4)
+           console.log(token)
+            const response = await axios.post(backend_url + "/api/product/add", formData, {headers:{token}});
+            console.log("line 38", response.data)
+        }catch(error){
+          
+        }
+  }
 
   console.log(sizes)
   return (
-    <form >
+    <form onSubmit={onSubmitHandler}>
     <div className="font-serif">
        <p>Upload Image</p>
        <div className="flex my-2">
@@ -54,7 +81,7 @@ const Add = () => {
           </div>
         <div>
           <p>Product Price</p>
-          <input type="number" className="border border-gray-400 rounded p-2 mt-2 md:w-3/4 w-full" onChange={(e)=>setPrice(e.target.value)} value={price}/>
+          <input type="number" className="border border-gray-400 rounded p-2 mt-2 md:w-3/4 w-full" placeholder="23" min={0} onChange={(e)=>setPrice(e.target.value)} value={price}/>
           </div>
        </div>
        <div className="mt-5">
