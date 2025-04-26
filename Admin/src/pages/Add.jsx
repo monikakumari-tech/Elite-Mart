@@ -15,7 +15,6 @@ const Add = ({token}) => {
   const [subCategory, setSubCategory]=useState("Topwear")
   const [bestseller, setBestseller]=useState(false)
   const [sizes, setSizes]=useState([])
-  console.log(token)
 
   const onSubmitHandler = async(e)=>{
         e.preventDefault()
@@ -25,7 +24,6 @@ const Add = ({token}) => {
             formData.append("description",description)
             formData.append("price",price)
             formData.append("category",category)
-            formData.append("subCategory",subCategory)
             formData.append("bestSeller",bestseller)
             formData.append("sizes",JSON.stringify(sizes))
             formData.append("subCategory",subCategory)
@@ -33,11 +31,14 @@ const Add = ({token}) => {
             image2 && formData.append("image2",image2)
             image3 && formData.append("image3",image3)
             image4 && formData.append("image4",image4)
-           console.log(token)
+
+            // formData.forEach((value, key) => {
+            //   console.log(key, value);
+            // });
             const response = await axios.post(backend_url + "/api/product/add", formData, {headers:{token}});
             console.log("line 38", response.data)
         }catch(error){
-          
+          console.log(error)
         }
   }
 
@@ -65,7 +66,7 @@ const Add = ({token}) => {
        <div className="flex flex-col gap:5 md:gap-15 mt-5 md:flex-row ">
         <div>
           <p>Product Category</p>
-          <select name="category"  className="border border-gray-400 rounded p-2 mt-2 w-full" onChange={(e)=>setCategory(e.target.value)} value={category}>
+          <select name="category"  className="border border-gray-400 rounded p-2 mt-2 w-full" onChange={(e)=>setCategory(e.target.value)} >
             <option value="men">Men</option>
             <option value="Women">Women</option>
             <option value="kids">Kids</option>
@@ -73,10 +74,10 @@ const Add = ({token}) => {
         </div>
         <div>
           <p>Sub Category</p>
-          <select name="subCategory" className="border border-gray-400 rounded p-2 mt-2 w-full" onChange={(e)=>setSubCategory(e.target.value)} value={subCategory}>
-            <option value="men">Topwear</option>
-            <option value="Women">Bottomwear</option>
-            <option value="kids">Kidswear</option>
+          <select name="subCategory" className="border border-gray-400 rounded p-2 mt-2 w-full" onChange={(e)=>setSubCategory(e.target.value)} >
+            <option value="Topwear">Topwear</option>
+            <option value="Bottomwear">Bottomwear</option>
+            <option value="kidwear">Kidswear</option>
           </select>
           </div>
         <div>
