@@ -16,6 +16,8 @@ const Collection = () => {
     setLatestProducts(products);
   }, []);
 
+  
+
   const toggleCategory=(e)=>{
     if(category.includes(e.target.value)){
       setCategory(prev=> prev.filter(item=> item != e.target.value))
@@ -67,7 +69,7 @@ const Collection = () => {
   
     applyFilter()
     
-  },[category,subCategory,filterPrice,search])
+  },[category,subCategory,filterPrice,search,products])
   
 
 

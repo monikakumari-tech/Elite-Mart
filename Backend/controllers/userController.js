@@ -100,6 +100,7 @@ const registerUser = async (req, res) => {
 const adminLogin = async (req, res) => {
   try{
      const {email, password}= req.body
+     console.log(req.body)
      if(process.env.ADMIN_EMAIL==email && process.env.ADMIN_PASSWORD==password){
        const token= jwt.sign(email+password,process.env.JWT_SECRET)
        console.log(email+password)
