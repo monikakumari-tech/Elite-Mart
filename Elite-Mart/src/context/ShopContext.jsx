@@ -2,12 +2,15 @@ import { createContext, useEffect, useState } from "react";
 // import { products } from "../assets/assets";
 import { toast } from "react-toastify";
 import axios from "axios"
+import { useNavigate } from "react-router-dom";
 
 // creating context API
 export const ShopContext=createContext();
 
 const ShopContextProvider=(props)=>{
   const backend_url= import.meta.env.VITE_BACKEND_URL
+  const [token, setToken] = useState("")
+  const navigate= useNavigate()
   const [products, setProducts]= useState([])
 
     const currency='$';
@@ -99,6 +102,9 @@ const ShopContextProvider=(props)=>{
   },[])
     const value={
        backend_url,
+       token,
+       setToken,
+       navigate,
          currency,
          delivery_fee,
          products,

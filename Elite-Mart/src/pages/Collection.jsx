@@ -3,7 +3,7 @@ import Title from "../components/Title";
 import { assets } from "../assets/assets";
 import { ShopContext } from "../context/ShopContext";
 import ProductItem from "../components/ProductItem";
-import SearchBar from "../components/SearchBar";
+// import SearchBar from "../components/SearchBar";
 
 const Collection = () => {
   const [showFilter, setShowFilter] = useState(false);
@@ -12,10 +12,10 @@ const Collection = () => {
   const [filterPrice, setFilterPrice] = useState("relevant")
   const { products, search, showSearch } = useContext(ShopContext);
   const [latestProducts, setLatestProducts] = useState([]);
-  useEffect(() => {
-    setLatestProducts(products);
-  }, []);
-
+  // useEffect(() => {
+  //   setLatestProducts(products);
+  // }, [products]);
+console.log(latestProducts)
   
 
   const toggleCategory=(e)=>{
@@ -27,6 +27,7 @@ const Collection = () => {
     }
 
   }
+
   const toggleSubCategory=(e)=>{
     if(subCategory.includes(e.target.value)){
       setSubCategory(prev=> prev.filter(item=> item != e.target.value))
@@ -36,9 +37,11 @@ const Collection = () => {
     }
 
   }
+
   const toggleFilterPrice=(e)=>{
     setFilterPrice( e.target.value)
   }
+
   const applyFilter=()=>{
     let productCopy=products.slice()
    if(search && showSearch){
@@ -98,7 +101,7 @@ const Collection = () => {
           <p className="mb-3 text-sm font-medium">Category</p>
           <div className="flex flex-col gap-2 text-sm font-light text-gray-700">
             <p className="flex gap-2">
-              <input type="checkbox" value={"Men"} onChange={toggleCategory} />
+              <input type="checkbox" value={"men"} onChange={toggleCategory} />
               Men
             </p>
             <p className="flex gap-2">
@@ -106,7 +109,7 @@ const Collection = () => {
               Women
             </p>
             <p className="flex gap-2">
-              <input type="checkbox" value={"Kids"} onChange={toggleCategory}/>
+              <input type="checkbox" value={"kids"} onChange={toggleCategory}/>
               Kids
             </p>
           </div>

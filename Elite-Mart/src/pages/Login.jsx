@@ -1,10 +1,49 @@
-import React, { useState } from "react";
-import Title from "../components/Title";
+import React, { useContext, useState } from "react";
+import axios from "axios"
+import { ShopContext } from "../context/ShopContext";
+import { toast } from "react-toastify";
 
 const Login = () => {
-  const [currentState, setCurrentState] = useState("Login");
-  const onSubmitHandler= (e)=>{
+  const [currentState, setCurrentState] = useState("Sign Up");
+  const {backend_url,token, setToken, navigate}=useContext(ShopContext)
+  const [name, setName]= useState("")
+  const [email, setEmail]= useState("")
+  const [password, setPassword]= useState("")
+
+  const onSubmitHandler= async (e)=>{
           e.preventDefault()
+          try{
+            if(currentState == "Sign Up"){
+              const response= await axios.post(backend_url+"/api/user/register",{name,email,password})
+              console.log(response)
+              if(response.data.success){
+                 setToken(response.data.token)
+
+                 localStorage.setItem("token",response.data.token)
+                
+                       console.log("registration done")
+                     }else{
+                      toast.error(response.data.message)
+                     }
+            }else{
+              const response= await axios.post(backend_url+"/api/user/login",{email,password})
+              console.log(response)
+              // if(response.data.success){
+              //    setToken(response.data.token)
+
+              //    localStorage.setItem("token",response.data.token)
+                
+              //          console.log("registration done")
+              //        }else{
+              //         toast.error(response.data.message)
+              //        }
+            }
+           
+          }catch(error){
+           console.log(error)
+          }
+        
+
   }
   return (
     <form onSubmit={onSubmitHandler}>
@@ -22,6 +61,8 @@ const Login = () => {
               className="border border-gray-400 px-2 py-2 rounded-sm w-full outline-none"
               placeholder="Name"
               required
+              onChange={(e)=>{setName(e.target.value)}}
+              value={name}
             />
           )}
           
@@ -30,12 +71,16 @@ const Login = () => {
             className="border border-gray-400 px-2 py-2 rounded-sm w-full outline-none"
             placeholder="Email"
             required
+            onChange={(e)=>{setEmail(e.target.value)}}
+              value={email}
           />
           <input
             type="password"
             className="border border-gray-400 px-2 py-2 rounded-sm w-full outline-none"
             placeholder="Password"
             required
+            onChange={(e)=>{setPassword(e.target.value)}}
+              value={password}
           />
          
           {
