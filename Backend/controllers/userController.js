@@ -50,6 +50,7 @@ const loginUser = async (req, res) => {
 }
 
 };
+// registerUser
 const registerUser = async (req, res) => {
   // res.send({message:"register api is working"})
   try {
@@ -97,6 +98,7 @@ const registerUser = async (req, res) => {
     })
   }
 };
+// adminLogin
 const adminLogin = async (req, res) => {
   try{
      const {email, password}= req.body
