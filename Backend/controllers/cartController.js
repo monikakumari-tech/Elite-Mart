@@ -5,6 +5,7 @@ const addToCart = async (req, res)=>{
 try {
     const {userId, itemId, size} = req.body
     //  userId 
+    console.log(itemId , userId)
     const userData = await userModel.findById(userId)
     
     let cartData = await userData.cartData
