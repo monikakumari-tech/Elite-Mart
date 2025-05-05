@@ -5,6 +5,8 @@ import { assets } from "../assets/assets";
 import Title from "../components/Title";
 import { Link } from "react-router-dom";
 import { ShopContext } from "../context/ShopContext";
+import axios from "axios";
+import { toast } from "react-toastify";
 
 const PlaceOrder = () => {
   const [method, setMethod] = useState("cod");
@@ -56,6 +58,26 @@ const PlaceOrder = () => {
         }
       }
       console.log("line number 58", orderItem);
+      let orderData= {
+        address:formData,
+        items:orderItem,
+        amount:getCartCount() +delivery_fee
+
+      }
+      switch(method){
+        case "cod":
+          const response = await axios.post(backend_url + "/api/order/place" , orderData , {headers:{token}})
+          console.log(response.data)
+          if(response.data.success){
+            setCartItem({})
+            navigate("/orders")
+          }else{
+            toast.error(response.data.message)
+          }
+          break;
+        default:
+            break;
+      }
     } catch (error) {
       console.log(error)
     }
