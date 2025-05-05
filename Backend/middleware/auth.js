@@ -10,7 +10,10 @@ if(!token){
 }
 try {
     const tokenDecode= jwt.verify(token, process.env.JWT_SECRET)
+    console.log(tokenDecode)
+    
     req.body.userId=tokenDecode.id
+
     next()
 } catch (error) {
     res.json({
@@ -19,5 +22,6 @@ try {
     })
 }
 }
+
 
 export default authUser

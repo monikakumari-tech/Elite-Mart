@@ -27,5 +27,5 @@ app.get("/", (req,res)=>{
 app.use("/api/user", userRouter)
 app.use("/api/product", productRouter)
  app.use("/api/cart", cartRouter)
- app.use("api/order",orderRouter)
+ app.use("/api/order",orderRouter)
 app.listen(port,()=>console.log(`server started on port number ${port}`))
