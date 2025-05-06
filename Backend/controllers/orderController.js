@@ -30,19 +30,25 @@ const placeOrder = async (req, res) => {
 const placeOrderStripe = async (req, res) => {};
 const placeOrderRazorPay = async (req, res) => {};
 const allOrders = async (req, res) => {};
+// userOrder api
 const userOrders = async (req, res) => {
   try {
     const { userId } = req.body;
-    const userorders = await orderModel.find({ userId });
+    const orders = await orderModel.find({ userId });
 
     res.json({
-      sucess: true,
-      userorders,
+      success: true,
+      orders,
     });
   } catch (error) {
-    res.error(error.message);
+    res.json({
+      success:false,
+      message:error.message
+    })
+    console.log(error);
   }
 };
+
 const updateStatus = async (req, res) => {};
 
 export {

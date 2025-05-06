@@ -13,8 +13,22 @@ const Orders = () => {
         return null
        }
        const response= await axios.post(backend_url + "/api/order/userorders",{} ,{headers:{token}})
-       console.log(response.data,"line no 16")
-       
+       console.log(response.data.success)
+      if(response.data.success){
+
+        let allOrderItem = []
+        response.data.orders.map((order)=>{
+            order.items.map((item)=>{
+                item["status"]= order.status
+                item["payment"]= order.payment
+                item["paymentMethod"]= order.paymentMethod
+                item["date"]= order.date
+                allOrderItem.push(item)
+            })
+        })
+        setOrderData(allOrderItem.reverse())
+        console.log(allOrderItem)
+      }
     } catch (error) {
       console.log(error)
     }
@@ -50,12 +64,15 @@ const Orders = () => {
                     <span>
                       {currency} {item.price}
                     </span>
-                    <span>Quantity:1</span>
-                    <span>Size:M</span>
+                    <span>Quantity:{item.quantity}</span>
+                    <span>Size:{item.size}</span>
                   </div>
 
                   <div className="text-gray-500">
-                    <span>Date:</span> 25,May,2025
+                    <span>Date: </span>{new Date(item.date).toDateString()}
+                  </div>
+                  <div className="text-gray-500">
+                    <span>Payment: </span>{item.paymentMethod}
                   </div>
                </div>
              </div>
@@ -63,10 +80,10 @@ const Orders = () => {
               <div className="  mb-4 md:justify-around items-center"> 
                 <div className="flex items-center justify-center gap-2">
                  <div className="w-5 h-5 bg-green-400 rounded-full"></div>
-                  Ready to ship</div>
+                  {item.status}</div>
                 
               </div>
-              <div className="border py-2 px-4 rounded-sm">Track Order</div>
+              <div className="border py-2 px-4 rounded-sm" onClick={loadOrderData}>Track Order</div>
             </div>
           <hr/>
             </>
