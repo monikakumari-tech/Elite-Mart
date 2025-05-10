@@ -89,11 +89,11 @@ const placeOrderStripe = async (req, res) => {
     const {userId, success, orderId}= req.body
     try {
       if(success=="true"){
-        await userModel.findByIdAndUpdate(orderId, {payment:true})
-        await userModel.findByIdAndUpdate(orderId,{ cartData: {} })
+        await orderModel.findByIdAndUpdate(orderId, {payment:true})
+        await userModel.findByIdAndUpdate(userId,{ cartData: {} })
        res.json({
         success:true,
-        message:""
+       
        })
       }
       

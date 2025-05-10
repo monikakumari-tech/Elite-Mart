@@ -3,13 +3,14 @@ import CartTotal from "../components/CartTotal";
 
 import { assets } from "../assets/assets";
 import Title from "../components/Title";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { ShopContext } from "../context/ShopContext";
 import axios from "axios";
 import { toast } from "react-toastify";
 
 const PlaceOrder = () => {
   const [method, setMethod] = useState("cod");
+
   const {
     navigate,
     backend_url,
@@ -77,9 +78,11 @@ const PlaceOrder = () => {
           break;
           case "stripe":
             const responseStripe =await axios.post(backend_url + "/api/order/stripe" ,orderData, {headers:{token}}) 
+             
             if(responseStripe.data.success){
               const {session_url}= responseStripe.data
               window.location.replace(session_url)
+              
             }else{
                toast.error(responseStripe.data.message)
             }
