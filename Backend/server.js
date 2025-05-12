@@ -17,7 +17,12 @@ connectDB()
 connectCloudinary()
 // middleware
 app.use(express.json())
-app.use(cors())
+app.use(cors(
+    {
+  origin: process.env.CLIENT_URL,
+  credentials: true
+}
+))
 
 // api endpoint
 app.get("/", (req,res)=>{
