@@ -1,6 +1,7 @@
+import React from 'react'
 import { assets } from "../assets/assets"
 import Card from "./Card"
-import React from 'react'
+
 
 const Ourpolicy = () => {
 
