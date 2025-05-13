@@ -49,7 +49,7 @@ const Orders = () => {
       <div>
         {orderData.map((item, index) => {
           return (
-            <>
+            <div key={index}>
             <div key={index} className="flex  flex-col sm:justify-between items-center md:flex-row">
 
               <div className="flex gap-5 my-4 ">
@@ -86,7 +86,7 @@ const Orders = () => {
               <div className="border py-2 px-4 rounded-sm" onClick={loadOrderData}>Track Order</div>
             </div>
           <hr/>
-            </>
+            </div>
           );
         })}
                </div>
