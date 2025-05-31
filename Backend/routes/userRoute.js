@@ -5,6 +5,7 @@ const userRouter= express.Router()
 
 userRouter.post("/register" , registerUser)
 userRouter.post("/login" , loginUser)
+// admin
 userRouter.post("/admin" , adminLogin)
 
 export default userRouter

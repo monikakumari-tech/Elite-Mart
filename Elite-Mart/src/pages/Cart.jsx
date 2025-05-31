@@ -44,12 +44,12 @@ const tempData = [];
 
         return (
           <>
-            <div key={index} className="flex py-5 justify-between items-center">
-              <div className="flex gap-4">
+            <div key={index} className="flex sm:flex-row flex-col gap-4 sm:gap-0 py-5 justify-between sm:items-center">
+              <div className="flex sm:flex-row flex-col gap-4">
                 <img
                   src={productData.image[0]}
                   alt="image"
-                  className="w-25 sm:w-30"
+                  className="w-3/4 m-auto sm:w-30"
                 />
                 <div className="flex flex-col text-xl text-gray-700  py-7">
                   <p>{productData.name}</p>
@@ -67,7 +67,7 @@ const tempData = [];
                 type="number"
                 defaultValue={item.quantity}
                 min={1}
-                className=" border py-3 px-2 "
+                className=" border py-3 px-2 w-20"
                 onChange={(e) =>
                   e.target.value === "" || e.target.value === "0"
                     ? null

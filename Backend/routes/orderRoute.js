@@ -9,8 +9,11 @@ orderRouter.post("/place", authUser, placeOrder)
 orderRouter.post("/stripe", authUser, placeOrderStripe)
 orderRouter.post("/verify",authUser, verifyStripe)
 orderRouter.post("/razorpay", authUser, placeOrderRazorPay)
-orderRouter.get("/list", adminAuth, allOrders)
 orderRouter.post("/userorders", authUser, userOrders)
+// admin
+orderRouter.get("/list", adminAuth, allOrders)
+
+// admin
 orderRouter.post("/status", adminAuth, updateStatus)
 
 export default orderRouter

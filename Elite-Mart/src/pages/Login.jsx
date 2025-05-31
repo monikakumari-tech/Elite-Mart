@@ -51,7 +51,7 @@ const Login = () => {
   return (
     <form onSubmit={onSubmitHandler}>
       <div className="  mt-16 ">
-        <div className="flex flex-col bg-blue-100 w-1/2 mx-auto gap-3 items-center p-6 rounded-sm">
+        <div className="flex flex-col bg-blue-100 sm:w-1/2 mx-auto gap-3 items-center p-6 rounded-sm">
           <div className="text-black flex items-center text-4xl pt-8 mb-2">
             <p>{currentState}</p>
             <hr className="w-8 h-2 mx-2" />
