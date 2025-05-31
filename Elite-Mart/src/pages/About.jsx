@@ -11,7 +11,10 @@ import Subscribe from '../components/Subscribe'
         <div className='text-center'><Title text1={"About"} text2={"Us"}/></div>
       
       <div className='flex flex-col lg:flex-row mt-8 items-center text-lg gap-20'>
-        <img src={assets.about_img} alt="image" className='lg:w-120 w-full' />
+        <div>
+          <img src={assets.about_img} alt="image" className='lg:w-120 w-full' />
+        </div>
+        
         <div className='flex flex-col gap-5'>
           <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sunt quibusdam quod omnis voluptas provident nobis magni tempora ad aliquid ab?</p>
           <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sunt quibusdam quod omnis voluptas provident nobis magni tempora ad aliquid ab?</p>

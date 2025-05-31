@@ -22,9 +22,11 @@ const Navbar = () => {
   };
   return (
     <div className="flex justify-between items-center py-5 font-medium">
+      {/* image */}
       <NavLink to="/">
         <img src={assets.mujlogo} alt="logo" className="w-40 h-18 rounded" />
       </NavLink>
+      {/* links */}
       <ul className="hidden sm:flex gap-5 text-[16px] text-gray-700">
         <NavLink to="/" className="flex flex-col items-center gap-1 ">
           <p>Home</p>
@@ -46,7 +48,7 @@ const Navbar = () => {
           <hr className="w-2/4 border-none h-[1.5px] hidden bg-gray-700" />
         </NavLink>
       </ul>
-
+{/* icons */}
       <div className="flex item-center gap-6">
         <img
           src={assets.search_icon}

@@ -106,7 +106,7 @@ const placeOrderStripe = async (req, res) => {
    }
 // place razor order
 const placeOrderRazorPay = async (req, res) => {};
-// all order for admin
+// all order for  admin
 const allOrders = async (req, res) => {
   try {
     const orders = await orderModel.find({});
@@ -121,7 +121,7 @@ const allOrders = async (req, res) => {
     });
   }
 };
-// userOrder api
+// userOrder api 
 const userOrders = async (req, res) => {
   try {
     const { userId } = req.body;
@@ -139,7 +139,7 @@ const userOrders = async (req, res) => {
     console.log(error);
   }
 };
-
+// admin
 const updateStatus = async (req, res) => {
   try {
     const { orderId, status } = req.body;
